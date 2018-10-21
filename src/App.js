@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Header from './components/Header/Header';
-import Principal from './components/Principal/Principal';
-import NotFound from './components/NotFound/NotFound';
-import EditarCancha from './components/EditarCancha/EditarCancha';
+import Header from './components/layout/Header/Header';
+import Principal from './components/pages/Principal/Principal';
+import NotFound from './components/pages/NotFound/NotFound';
+import EditarCancha from './components/objects/EditarCancha/EditarCancha';
 
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 

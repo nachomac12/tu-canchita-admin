@@ -1,6 +1,6 @@
 import React from 'react';
-import ListaCanchas from '../ListaCanchas/ListaCanchas';
-import AgregarCancha from '../AgregarCancha/AgregarCancha';
+import ListaCanchas from '../../objects/ListaCanchas/ListaCanchas';
+import AgregarCancha from '../../objects/AgregarCancha/AgregarCancha';
 
 const Principal = () => {
   return (

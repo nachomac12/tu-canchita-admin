@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TextInputGroup from '../TextInputGroup/TextInputGroup';
+import TextInputGroup from '../../layout/TextInputGroup/TextInputGroup';
 import firebase from 'firebase';
 
 class AgregarCancha extends Component {
