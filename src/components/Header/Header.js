@@ -1,12 +1,10 @@
 import React from 'react';
 
-const Header = (props) => {
+const Header = () => {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0">
         <div className="container">
-          <a href="" className="navbar-brand">
-            Tu-Canchita Admin
-          </a>
+          <h3 className="text-white pt-1">Tu-Canchita Admin</h3>
         </div>
       </nav>
     );

@@ -4,7 +4,7 @@ import firebase from 'firebase';
 
 class AgregarCancha extends Component {
   state = {
-    imagen: "http://www.pistafutbol5.com/public/image/Captura_de_pantalla_2016-01-26_a_las_23.38__.36__.png",
+    imagen: {uri: "http://www.pistafutbol5.com/public/image/Captura_de_pantalla_2016-01-26_a_las_23.38__.36__.png"},
     nombre: '',
     precio: '',
     puntaje: '0',
