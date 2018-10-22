@@ -8,7 +8,24 @@ class AgregarCancha extends Component {
     nombre: '',
     precio: '',
     puntaje: '0',
-    turnos: [],
+    turnos: [
+      {fecha: "22-11-2018", horario: "08-09", alquilado: false},
+      {fecha: "22-11-2018", horario: "09-10", alquilado: false},
+      {fecha: "22-11-2018", horario: "10-11", alquilado: false},
+      {fecha: "22-11-2018", horario: "11-12", alquilado: false},
+      {fecha: "22-11-2018", horario: "12-13", alquilado: false},
+      {fecha: "22-11-2018", horario: "13-14", alquilado: false},
+      {fecha: "22-11-2018", horario: "14-15", alquilado: false},
+      {fecha: "22-11-2018", horario: "15-16", alquilado: false},
+      {fecha: "22-11-2018", horario: "16-17", alquilado: false},
+      {fecha: "22-11-2018", horario: "17-18", alquilado: false},
+      {fecha: "22-11-2018", horario: "18-19", alquilado: false},
+      {fecha: "22-11-2018", horario: "19-20", alquilado: false},
+      {fecha: "22-11-2018", horario: "20-21", alquilado: false},
+      {fecha: "22-11-2018", horario: "21-22", alquilado: false},
+      {fecha: "22-11-2018", horario: "22-23", alquilado: false},
+      {fecha: "22-11-2018", horario: "23-24", alquilado: false}
+    ],
     ubicacion: '',
     errors: {}
   }
