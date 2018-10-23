@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
 import Turno from '../Turno/Turno';
+import { Redirect } from 'react-router-dom';
 
 class EditarCancha extends Component {
   constructor() {
@@ -11,11 +12,13 @@ class EditarCancha extends Component {
       canchaNombre: "",
       imagen: null,
       url: "",
-      progress: 0
+      progress: 0,
+      redirect: false
     }
 
     this.onChange = this.onChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
+    // this.eliminarCancha = this.eliminarCancha.bind(this)
   }
   
   componentDidMount() {
@@ -51,23 +54,35 @@ class EditarCancha extends Component {
     const { imagen } = this.state;
     const uploadTask = firebase.storage().ref(`images/${imagen.name}`).put(imagen)
     uploadTask.on('state_changed', 
-    snap => {
-      // barra progreso
-      const progress = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
-        this.setState({progress});
-    },
-    error => {
-      // rta a errores
-      console.log(error)
-    },
-    () => {
-      firebase.storage().ref('images').child(imagen.name).getDownloadURL().then(url => {
-        this.setState({url})
-        firebase.database().ref().child(`canchas/${id}`).update({imagen: {uri: this.state.url}})
-      })
-    }
+      snap => {
+        // barra progreso
+        const progress = Math.round((snap.bytesTransferred / snap.totalBytes) * 100);
+          this.setState({progress});
+      },
+      error => {
+        // rta a errores
+        console.log(error)
+      },
+      () => {
+        firebase.storage().ref('images').child(imagen.name).getDownloadURL().then(url => {
+          this.setState({url})
+          firebase.database().ref().child(`canchas/${id}`).update({imagen: {uri: this.state.url}})
+        })
+      }
     )
   }
+  
+  /*
+  eliminarCancha = () => {
+    const { id } = this.props.match.params;
+    if(window.confirm("¿Está seguro de que desea eliminar esta cancha?")) {
+      firebase.database().ref().child(`canchas/${id}`).remove()
+      this.setState({redirect: true})
+    } else {
+      return;
+    }
+  } 
+  */
 
   render() {
     var color = "";
@@ -87,21 +102,30 @@ class EditarCancha extends Component {
       />
       )
     })
+
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
+
     return (
       <div className="row justify-content-center">
         <div className="col-md-5">
-          <h1 className="text-center">{this.state.canchaNombre}</h1>
+          <h1 className="text-center text-success">{this.state.canchaNombre}</h1>
           <img className="m-2" src={this.state.canchaImagen.uri} width="100%" alt="img"/>
           <input 
+            className="m-2"
             type="file" 
             onChange={this.onChange}
-            className="m-2"
           />
           <div className="progress ml-2">
-            <div className="progress-bar bg-success" style={{width: `${this.state.progress}%`}}>{this.state.progress}%</div>
+            <div className="progress-bar bg-success" style={{width: `${this.state.progress}%`}}>
+              {this.state.progress}%
+            </div>
           </div>
           <button type="submit" className="btn btn-outline-success btn-block m-2" onClick={this.onSubmit}>Enviar</button>
+          {/* <button className="btn btn-danger btn-block ml-2 mt-4" onClick={this.eliminarCancha}>Eliminar cancha</button> */}
         </div>
+
         <div className="col-md-5">
           {turnos}
         </div>

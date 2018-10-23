@@ -38,9 +38,8 @@ class ListaCanchas extends Component {
   render() {
     const canchas = this.state.canchas.map(cancha => {
       return(
-        <div className="col-md-3 mt-2">
+        <div className="col-lg-3 d-flex align-items-stretch mt-2" key={cancha.id}>
           <Cancha
-            key={cancha.id}
             nombre={cancha.nombre}
             imagen={cancha.imagen.uri}
             id={cancha.id}
@@ -49,7 +48,7 @@ class ListaCanchas extends Component {
       )
     })
     return(
-      <div className="row justify-content-center m-2">
+      <div className="row m-2">
         {canchas}
       </div>
     )
